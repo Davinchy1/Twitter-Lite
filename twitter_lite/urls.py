@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.urls.base import reverse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("tweets/", include("tweets.urls")),
-    path("post/", include("post.urls")),
-    path("api-auth/", include("rest_framework.urls")),
+    path('auth/', include('rest_framework.urls')),
+    path("tweets/", include('tweets.urls')),
+    
 ]
+
+   
