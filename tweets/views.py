@@ -1,9 +1,9 @@
 from tweets.serializers import TweetSerializer
 from rest_framework.serializers import Serializer
 from django.shortcuts import render, HttpResponse
-from rest_framework import viewsets,permissions
-from .models import Comment, Retweet, Trends, Tweet, Like
-from .serializers import Commentserializer, LikeSerializer,Retweetserializer, Trendsserializer
+from rest_framework import viewsets, permissions
+from .models import Comment, Retweet, Tweet, Like
+from .serializers import Commentserializer, LikeSerializer,Retweetserializer
 
 
 # Create your views here.
@@ -32,13 +32,6 @@ class RetweetviewSet(viewsets.ModelViewSet):
     queryset=Retweet.objects.all()
     serializer_class = Retweetserializer
 
-class TrendsviewSet(viewsets.ModelViewSet):
-    '''
-    API for all trends available in the app 
-    '''
-    queryset=Trends.objects.all()
-    serializer_class=Trendsserializer
-
 
 class CommentviewSet(viewsets.ModelViewSet):
     '''
@@ -46,3 +39,11 @@ class CommentviewSet(viewsets.ModelViewSet):
     '''
     queryset = Comment.objects.all()
     serializer_class=Commentserializer
+
+
+# class TrendsviewSet(viewsets.ModelViewSet):
+#     '''
+#     API for all trends available in the app 
+#     '''
+#     queryset=Trends.objects.all()
+#     serializer_class=Trendsserializer

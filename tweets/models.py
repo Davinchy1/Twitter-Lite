@@ -40,11 +40,6 @@ class Retweet(models.Model):
         unique_together = ("user","tweet",)
 
 
-class Trends(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tweet = models.ForeignKey(Tweet,on_delete=models.CASCADE)
-    created_on =models.DateTimeField(auto_now_add=True)
-
 class Comment(models.Model):
     text = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -52,6 +47,12 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        #this makes sure that the user and twee pair dont occure more thand once
+        #this makes sure that the user and tweet pair dont occure more thand once
         #e.g(user1, tweet1) can only exit once 
         unique_together = ("user","tweet")
+
+
+# class Trends(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     tweet = models.ForeignKey(Tweet,on_delete=models.CASCADE)
+#     created_on =models.DateTimeField(auto_now_add=True)

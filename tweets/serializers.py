@@ -1,7 +1,7 @@
 from django.db.models import fields
 from rest_framework.fields import CharField
 from rest_framework.serializers import ModelSerializer, IntegerField
-from .models import Comment, Retweet, Trends, Tweet, Like
+from .models import Comment, Retweet, Tweet, Like
 
 class TweetSerializer(ModelSerializer):
     likes = IntegerField(source="get_num_like",read_only = True)
@@ -23,12 +23,14 @@ class Retweetserializer(ModelSerializer):
         fields = ["tweet", "user"]
         # depth = 1
 
-class Trendsserializer(ModelSerializer):
-    class Meta:
-        model = Trends
-        fields = ["tweet", "user"]
 
 class Commentserializer(ModelSerializer):
     class Meta:
         model = Comment
         fields = ["tweet","user"]
+
+
+# class Trendsserializer(ModelSerializer):
+#     class Meta:
+#         model = Trends
+#         fields = ["tweet", "user"]
